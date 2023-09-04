@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\PageHomeController;
+use App\Http\Controllers\ProjectController;
 
 Route::get('/', [PageHomeController::class, 'index'])->name('home');
+
+Route::post('/projects', [ProjectController::class, 'store']);
