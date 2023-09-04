@@ -3,7 +3,7 @@
 ## Initial configuration
 
 * Install a new Laravel Project
-* (Install Pest)[https://pestphp.com/docs/installation]
+* [Install Pest](https://pestphp.com/docs/installation)
     * Initial command: `composer require pestphp/pest --dev --with-all-dependencies`
     * Plugin: `composer require pestphp/pest-plugin-laravel --dev`
     * Final installation: `php artisan pest:install`
@@ -34,3 +34,4 @@
 <env name="DB_CONNECTION" value="sqlite"/>
 <env name="DB_DATABASE" value=":memory:"/>
 ```
+* Install plugin for VSCode: [Better Pest](https://marketplace.visualstudio.com/items?itemName=m1guelpf.better-pest)
