@@ -9,7 +9,10 @@ class PageHomeController extends Controller
 {
     public function index()
     {
-        $projects = Project::all();
+        // $projects = Project::all()->where('public', true);
+        $projects = Project::query()
+            ->where('public', true)
+            ->get();
         return view('home', compact('projects'));
     }
 }
