@@ -1,7 +1,7 @@
 <?php
 
 it('gives back a successful response for the homepage', function () {
-    $response = $this->get('/');
-
-    $response->assertStatus(200);
+    // Act and Assert
+    $this->get(route('home'))
+        ->assertStatus(200); //assertOk()
 });
