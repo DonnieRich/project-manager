@@ -1,47 +1,49 @@
 <?php
 
 use App\Models\Project;
+use Illuminate\Support\Carbon;
 
 it('shows projects overview', function () {
 
     // $this->withoutExceptionHandling();
 
     // Arrange
-    Project::factory()->create(['title' => 'Project A', 'description' => 'Project A description']);
-    Project::factory()->create(['title' => 'Project B', 'description' => 'Project B description']);
-    Project::factory()->create(['title' => 'Project C', 'description' => 'Project C description']);
+    $firstProject = Project::factory()->public()->create();
+    $secondProject = Project::factory()->public()->create();
+    $lastProject = Project::factory()->public()->create();
 
     // Act and Assert
     $this->get(route('home'))
         ->assertSeeText([
-            'Project A',
-            'Project A description',
-            'Project B',
-            'Project B description',
-            'Project C',
-            'Project C description'
+            $firstProject->title,
+            $firstProject->description,
+            $secondProject->title,
+            $secondProject->description,
+            $lastProject->title,
+            $lastProject->description,
         ]);
 });
 
 it('shows only public projects', function () {
     // Arrange
-    Project::factory()->create(['title' => 'Project A', 'public' => true]);
-    Project::factory()->create(['title' => 'Project B']);
+    $publicProject = Project::factory()->public()->create();
+    $privateProject = Project::factory()->create();
 
     // Act and Assert
     $this->get(route('home'))
-        ->assertSeeText([
-            'Project A',
-        ])
-        ->assertDontSeeText([
-            'Project B',
-        ]);
+        ->assertSeeText($publicProject->title)
+        ->assertDontSeeText($privateProject->title);
 });
 
 it('shows projects by last modified date', function () {
     // Arrange
+    $updatedProject = Project::factory()->public()->updated(Carbon::yesterday())->create();
+    $lastUpdatedProject = Project::factory()->public()->updated()->create();
 
-    // Act
-
-    // Assert
+    // Act and Assert
+    $this->get(route('home'))
+        ->assertSeeTextInOrder([
+            $lastUpdatedProject->title,
+            $updatedProject->title
+        ]);
 });

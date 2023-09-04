@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,5 +21,19 @@ class ProjectFactory extends Factory
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph
         ];
+    }
+
+    public function updated(Carbon $date = null): self
+    {
+        return $this->state(
+            fn ($attributes) => ['updated_at' => $date ?? Carbon::now()]
+        );
+    }
+
+    public function public(Bool $public = true): self
+    {
+        return $this->state(
+            fn ($attributes) => ['public' => $public]
+        );
     }
 }

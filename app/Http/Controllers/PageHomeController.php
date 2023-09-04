@@ -9,10 +9,12 @@ class PageHomeController extends Controller
 {
     public function index()
     {
-        // $projects = Project::all()->where('public', true);
+        // $projects = Project::all()->where('public', true)->orderBy('updated_at', 'desc');
         $projects = Project::query()
-            ->where('public', true)
+            ->public()
+            ->orderByDesc('updated_at')
             ->get();
+
         return view('home', compact('projects'));
     }
 }
