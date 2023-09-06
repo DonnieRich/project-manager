@@ -10,11 +10,11 @@ it('allows a user to create a project', function () {
     $project = Project::factory()->raw();
 
     // Act and Assert
-    $this->post('/projects', $project)->assertRedirect('/projects');
+    $this->post(route('projects.store'), $project)->assertRedirect(route('projects.index'));
 
     $this->assertDatabaseHas('projects', $project);
 
-    $this->get('/projects')->assertSee($project['title']);
+    $this->get(route('projects.index'))->assertSee($project['title']);
 });
 
 it('show an error if the project does not have a title', function () {
@@ -24,7 +24,7 @@ it('show an error if the project does not have a title', function () {
     ]);
 
     // Act and Assert
-    $this->post('/projects', $project_attributes)->assertSessionHasErrors('title');
+    $this->post(route('projects.store'), $project_attributes)->assertSessionHasErrors('title');
 });
 
 it('show an error if the project does not have a description', function () {
@@ -34,5 +34,5 @@ it('show an error if the project does not have a description', function () {
     ]);
 
     // Act and Assert
-    $this->post('/projects', $project_attributes)->assertSessionHasErrors('description');
+    $this->post(route('projects.store'), $project_attributes)->assertSessionHasErrors('description');
 });

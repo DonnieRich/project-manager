@@ -18,8 +18,8 @@ use App\Http\Controllers\ProjectController;
 
 Route::get('/', [PageHomeController::class, 'index'])->name('home');
 
-Route::post('/projects', [ProjectController::class, 'store']);
-Route::get('/projects', [ProjectController::class, 'index']);
+Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 
 // Route::post('/projects', function () {
 //     App\Models\Project::create(request(['title', 'description']));
