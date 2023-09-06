@@ -35,3 +35,42 @@
 <env name="DB_DATABASE" value=":memory:"/>
 ```
 * Install plugin for VSCode: [Better Pest](https://marketplace.visualstudio.com/items?itemName=m1guelpf.better-pest)
+
+## Basic CRUD
+
+Let's start with a simple test: a POST request to a route with a title and a description.
+Remember to add `$this->withoutExceptionHandling();` for more explicit errors.
+
+At first the test should look like this:
+
+```php
+    $this->withoutExceptionHandling();
+
+    // Arrange
+    $project = [
+        'title' => 'abc',
+        'description' => 'xyz'
+    ];
+
+    // Act and Assert
+    $this->post('/projects', $project);
+
+    $this->assertDatabaseHas('projects', $project);
+```
+
+Let's add the logic directly inside `web.php` (just a temporary measure to better show later how tests allows us to refactor with ease).
+
+```php
+Route::post('/projects', function () {
+    App\Models\Project::create(request(['title', 'description']));
+});
+
+Route::get('/projects', function () {
+    $projects = App\Models\Project::all();
+
+    return view('projects.index', compact('projects'));
+});
+```
+
+Let's create the ProjectFactory and show how to use it:
+
