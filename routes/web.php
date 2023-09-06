@@ -19,3 +19,14 @@ use App\Http\Controllers\ProjectController;
 Route::get('/', [PageHomeController::class, 'index'])->name('home');
 
 Route::post('/projects', [ProjectController::class, 'store']);
+Route::get('/projects', [ProjectController::class, 'index']);
+
+// Route::post('/projects', function () {
+//     App\Models\Project::create(request(['title', 'description']));
+// });
+
+// Route::get('/projects', function () {
+//     $projects = App\Models\Project::all();
+
+//     return view('projects.index', compact('projects'));
+// });
