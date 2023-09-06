@@ -30,7 +30,7 @@
 }
 ```
 * Remove comments for database in phpunit.xml file:
-```xlm
+```xml
 <env name="DB_CONNECTION" value="sqlite"/>
 <env name="DB_DATABASE" value=":memory:"/>
 ```
@@ -44,19 +44,21 @@ Remember to add `$this->withoutExceptionHandling();` for more explicit errors.
 At first the test should look like this:
 
 ```php
-    $this->withoutExceptionHandling();
+$this->withoutExceptionHandling();
 
-    // Arrange
-    $project = [
-        'title' => 'abc',
-        'description' => 'xyz'
-    ];
+// Arrange
+$project = [
+    'title' => 'abc',
+    'description' => 'xyz'
+];
 
-    // Act and Assert
-    $this->post('/projects', $project);
+// Act and Assert
+$this->post('/projects', $project);
 
-    $this->assertDatabaseHas('projects', $project);
+$this->assertDatabaseHas('projects', $project);
 ```
+
+Obviously we are missing the migration and the model, on top of the route and the logic.
 
 Let's add the logic directly inside `web.php` (just a temporary measure to better show later how tests allows us to refactor with ease).
 
@@ -73,4 +75,19 @@ Route::get('/projects', function () {
 ```
 
 Let's create the ProjectFactory and show how to use it:
+`php artisan make:factory ProjectFactory`
 
+```php
+public function definition(): array
+{
+    return [
+        'title' => fake()->sentence,
+        'description' => fake()->paragraph
+    ];
+}
+
+```
+
+Brief overview of `create()`, `make()` and `raw()` using a test and Tinker (`php artisan tinker`);
+
+Refactor to a ProjectController and add validation.
