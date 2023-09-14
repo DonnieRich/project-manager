@@ -18,7 +18,7 @@ RUN apt-get update \
     && apt-get install -y \
     build-essential \
     # g++ \
-    # libicu-dev \
+    libicu-dev \
     # libpq-dev \
     # libzip-dev \
     # libpng-dev \
