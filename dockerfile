@@ -16,16 +16,16 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesourc
 
 RUN apt-get update \
     && apt-get install -y \
-    g++ \
-    libicu-dev \
-    libpq-dev \
-    libzip-dev \
+    # g++ \
+    # libicu-dev \
+    # libpq-dev \
+    # libzip-dev \
     # libpng-dev \
     # libjpeg-dev \
     # libwebp-dev \
     #libfreetype6-dev \
     zip \
-    zlib1g-dev \
+    # zlib1g-dev \
     nodejs \
     #npm \
     #&& docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
