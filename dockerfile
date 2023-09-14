@@ -23,7 +23,7 @@ RUN apt-get update \
     libonig-dev \
     libxml2-dev \
     # libpq-dev \
-    # libzip-dev \
+    libzip-dev \
     # libjpeg-dev \
     # libwebp-dev \
     #libfreetype6-dev \
