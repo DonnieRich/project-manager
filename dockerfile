@@ -16,7 +16,7 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesourc
 
 RUN apt-get update \
     && apt-get install -y \
-    # g++ \
+    g++ \
     # libicu-dev \
     # libpq-dev \
     # libzip-dev \
