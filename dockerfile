@@ -16,8 +16,9 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesourc
 
 RUN apt-get update \
     && apt-get install -y \
-    g++ \
-    libicu-dev \
+    build-essential \
+    # g++ \
+    # libicu-dev \
     # libpq-dev \
     # libzip-dev \
     # libpng-dev \
@@ -34,7 +35,8 @@ RUN apt-get update \
     opcache \
     pdo \
     mysqli \
-    pdo_mysql
+    pdo_mysql \
+    zip
 #gd
 
 WORKDIR /var/www/project-manager
