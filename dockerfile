@@ -107,7 +107,5 @@ RUN ["chmod", "+x", "./docker-entrypoint.sh"]
 RUN mkdir -p /var/www/project-manager/storage/logs
 RUN chown -R www-data:www-data /var/www/project-manager/storage
 
-RUN -p 8000:80
-
-EXPOSE 80
+EXPOSE 8000
 ENTRYPOINT ["./docker-entrypoint.sh"]
