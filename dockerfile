@@ -33,7 +33,7 @@ RUN apt-get update \
     #npm \
     #&& docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install \
-    intl \
+    # intl \
     opcache \
     pdo \
     mysqli \
