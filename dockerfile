@@ -27,7 +27,7 @@ RUN apt-get update \
     zip \
     zlib1g-dev \
     nodejs \
-    npm \
+    #npm \
     && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install \
     intl \
