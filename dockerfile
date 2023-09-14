@@ -20,23 +20,22 @@ RUN apt-get update \
     libicu-dev \
     libpq-dev \
     libzip-dev \
-    libpng-dev \
-    libjpeg-dev \
-    libwebp-dev \
-    libfreetype6-dev \
+    # libpng-dev \
+    # libjpeg-dev \
+    # libwebp-dev \
+    #libfreetype6-dev \
     zip \
     zlib1g-dev \
     nodejs \
     #npm \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
+    #&& docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install \
     intl \
     opcache \
     pdo \
     mysqli \
-    pdo_mysql \
-    gd \
-    zip
+    pdo_mysql
+#gd
 
 WORKDIR /var/www/project-manager
 
