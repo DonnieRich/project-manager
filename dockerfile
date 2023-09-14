@@ -34,7 +34,7 @@ RUN apt-get update \
     #&& docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install \
     # intl \
-    opcache \
+    # opcache \
     pdo \
     mysqli \
     pdo_mysql \
