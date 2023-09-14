@@ -19,9 +19,11 @@ RUN apt-get update \
     build-essential \
     # g++ \
     libicu-dev \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
     # libpq-dev \
     # libzip-dev \
-    # libpng-dev \
     # libjpeg-dev \
     # libwebp-dev \
     #libfreetype6-dev \
