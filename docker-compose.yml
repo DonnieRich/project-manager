@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    container_name: db-project-manager
+    volumes:
+      - ./data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: project-manager
+    networks:
+      - project-manager-site
+    ports:
+      - 3306
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - 8088:80
+    environment:
+      PMA_HOST: db-project-manager
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root
+      UPLOAD_LIMIT: 512M
+    networks:
+      - project-manager-site
+  php-apache:
+    container_name: project-manager
+    build:
+      context: ./
+    ports:
+      - '8000:80'
+    volumes:
+      - ./:/var/www/project-manager
+      - ./apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
+    depends_on:
+      - db
+    networks:
+      - project-manager-site
+    env_file:
+      - .env
+networks:
+  project-manager-site:
+volumes:
+  persistent:

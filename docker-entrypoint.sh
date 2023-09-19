@@ -14,5 +14,7 @@ php artisan migrate
 
 npm install && npm run build
 
+php artisan serve --host=0.0.0.0 --port=80
+
 # Run the main container command
 exec "$@"

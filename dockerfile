@@ -22,19 +22,19 @@ RUN apt-get update \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
-    # libpq-dev \
+    libpq-dev \
     libzip-dev \
-    # libjpeg-dev \
-    # libwebp-dev \
-    #libfreetype6-dev \
+    libjpeg-dev \
+    libwebp-dev \
+    libfreetype6-dev \
     zip \
-    # zlib1g-dev \
+    zlib1g-dev \
     nodejs \
     #npm \
-    #&& docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install \
-    # intl \
-    # opcache \
+    intl \
+    opcache \
     pdo \
     mysqli \
     pdo_mysql \
@@ -107,5 +107,5 @@ RUN ["chmod", "+x", "./docker-entrypoint.sh"]
 RUN mkdir -p /var/www/project-manager/storage/logs
 RUN chown -R www-data:www-data /var/www/project-manager/storage
 
-EXPOSE 8000
+EXPOSE 80
 ENTRYPOINT ["./docker-entrypoint.sh"]
