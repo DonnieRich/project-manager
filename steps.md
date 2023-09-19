@@ -91,3 +91,7 @@ public function definition(): array
 Brief overview of `create()`, `make()` and `raw()` using a test and Tinker (`php artisan tinker`);
 
 Refactor to a ProjectController and add validation.
+
+
+## GitHub CI
+https://laravel-news.com/laravel-github-actions
