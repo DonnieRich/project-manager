@@ -36,3 +36,5 @@ it('show an error if the project does not have a description', function () {
     // Act and Assert
     $this->post(route('projects.store'), $project_attributes)->assertSessionHasErrors('description');
 });
+
+// TODO: test if user can see a project
